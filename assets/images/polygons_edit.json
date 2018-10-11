@@ -1,0 +1,272 @@
+{
+	"textures": [
+		{
+			"image": "polygons_edit.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 428,
+				"h": 255
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "bigTriangleBG_edit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 140,
+						"h": 140
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 140,
+						"h": 140
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 140,
+						"h": 140
+					}
+				},
+				{
+					"filename": "mediumTriangleBG_edit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 99,
+						"h": 99
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 99,
+						"h": 99
+					},
+					"frame": {
+						"x": 1,
+						"y": 143,
+						"w": 99,
+						"h": 99
+					}
+				},
+				{
+					"filename": "vertice_5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 5,
+						"h": 5
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 5,
+						"h": 5
+					},
+					"frame": {
+						"x": 1,
+						"y": 244,
+						"w": 5,
+						"h": 5
+					}
+				},
+				{
+					"filename": "vertice.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1,
+						"h": 1
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
+					},
+					"frame": {
+						"x": 1,
+						"y": 251,
+						"w": 3,
+						"h": 3
+					}
+				},
+				{
+					"filename": "mediumTriangle_edit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 99,
+						"h": 99
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 99,
+						"h": 99
+					},
+					"frame": {
+						"x": 102,
+						"y": 143,
+						"w": 99,
+						"h": 99
+					}
+				},
+				{
+					"filename": "bigTriangle_edit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 140,
+						"h": 140
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 140,
+						"h": 140
+					},
+					"frame": {
+						"x": 143,
+						"y": 1,
+						"w": 140,
+						"h": 140
+					}
+				},
+				{
+					"filename": "parallelogramBG_edit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 149,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 149,
+						"h": 50
+					},
+					"frame": {
+						"x": 203,
+						"y": 143,
+						"w": 149,
+						"h": 50
+					}
+				},
+				{
+					"filename": "parallelogram_edit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 149,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 149,
+						"h": 50
+					},
+					"frame": {
+						"x": 203,
+						"y": 195,
+						"w": 149,
+						"h": 50
+					}
+				},
+				{
+					"filename": "diamondBG_edit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 70,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 70,
+						"h": 70
+					},
+					"frame": {
+						"x": 285,
+						"y": 1,
+						"w": 70,
+						"h": 70
+					}
+				},
+				{
+					"filename": "diamond_edit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 70,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 70,
+						"h": 70
+					},
+					"frame": {
+						"x": 354,
+						"y": 73,
+						"w": 70,
+						"h": 70
+					}
+				},
+				{
+					"filename": "smallTriangleBG_edit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 70,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 70,
+						"h": 70
+					},
+					"frame": {
+						"x": 357,
+						"y": 1,
+						"w": 70,
+						"h": 70
+					}
+				},
+				{
+					"filename": "smallTriangle_edit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 70,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 70,
+						"h": 70
+					},
+					"frame": {
+						"x": 354,
+						"y": 145,
+						"w": 70,
+						"h": 70
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:fc0a69c1a7362c7fb092938a6754c07d:cb5ec37b59574ee2427a8125581f4112:e951aaae5397048950c99be96013709d$"
+	}
+}

@@ -1,0 +1,320 @@
+{
+	"textures": [
+		{
+			"image": "polygons.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 204,
+				"h": 447
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "parallelogram_grey.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 136,
+						"h": 45
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 136,
+						"h": 45
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 136,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "diamond_grey.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					},
+					"frame": {
+						"x": 139,
+						"y": 1,
+						"w": 64,
+						"h": 64
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "parallelogram_orange.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 136,
+						"h": 45
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 136,
+						"h": 45
+					},
+					"frame": {
+						"x": 1,
+						"y": 48,
+						"w": 136,
+						"h": 45
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "diamond_orange.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					},
+					"frame": {
+						"x": 139,
+						"y": 67,
+						"w": 64,
+						"h": 64
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bigTriangle_grey.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 1,
+						"y": 95,
+						"w": 128,
+						"h": 128
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "vertice_5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 5,
+						"h": 5
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 5,
+						"h": 5
+					},
+					"frame": {
+						"x": 131,
+						"y": 95,
+						"w": 5,
+						"h": 5
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "vertice.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 1,
+						"h": 1
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
+					},
+					"frame": {
+						"x": 131,
+						"y": 102,
+						"w": 3,
+						"h": 3
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "smallTriangle_grey.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					},
+					"frame": {
+						"x": 131,
+						"y": 133,
+						"w": 64,
+						"h": 64
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "smallTriangle_orange.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					},
+					"frame": {
+						"x": 131,
+						"y": 199,
+						"w": 64,
+						"h": 64
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "bigTriangle_orange.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 1,
+						"y": 225,
+						"w": 128,
+						"h": 128
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "mediumTriangle_grey.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 91,
+						"h": 91
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 91,
+						"h": 91
+					},
+					"frame": {
+						"x": 1,
+						"y": 355,
+						"w": 91,
+						"h": 91
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "mediumTriangle_orange.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 91,
+						"h": 91
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 91,
+						"h": 91
+					},
+					"frame": {
+						"x": 94,
+						"y": 355,
+						"w": 91,
+						"h": 91
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:347f69d3fdaef3dfe7984b16b5d738fa:bde0737dfbd95dd3dbe0c2ff183504b7:3b45997681754dc1213a0fb5d315848c$"
+	}
+}

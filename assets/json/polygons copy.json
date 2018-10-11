@@ -1,0 +1,75 @@
+{
+	"triangle": {
+		"type": "fromPhysicsEditor",
+		"label": "triangle",
+		"isStatic": false,
+		"density": 0.1,
+		"isSensor":true,
+		"restitution": 0,
+		"friction": 0.1,
+		"frictionAir": 0.01,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":201, "y":201 }, { "x":100, "y":0 }, { "x":0, "y":200 } ]
+				]
+			}
+		]
+	},
+	"diamond": {
+		"type": "fromPhysicsEditor",
+		"label": "diamond",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":89, "y":-1 }, { "x":0, "y":92 }, { "x":90, "y":180 }, { "x":179, "y":91 } ]
+				]
+			}
+		]
+	},
+	"halfDiamond": {
+		"type": "fromPhysicsEditor",
+		"label": "halfDiamond",
+		"isStatic": false,
+		"density": 0.10000000149011612,
+		"restitution": 0,
+		"friction": 0.10000000149011612,
+		"frictionAir": 0.009999999776482582,
+		"frictionStatic": 0.5,
+		"collisionFilter": {
+			"group": 0,
+			"category": 1,
+			"mask": 255
+		},
+		"fixtures": [
+			{
+				"label": "",
+				"isSensor": false,
+				"vertices": [
+					[ { "x":178, "y":90 }, { "x":89, "y":1 }, { "x":1, "y":90 } ]
+				]
+			}
+		]
+	}
+}
