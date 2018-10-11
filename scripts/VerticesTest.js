@@ -1,18 +1,24 @@
-var global = {
+let global = {
 	diamond: [],
 	bigTriangle: [],
 	mediumTriangle: [],
 	smallTriangle: [],
 	parallelogram: []
 };
-var globalBg = {
+
+let globalBg = {
 	diamond: [],
 	bigTriangle: [],
 	mediumTriangle: [],
 	smallTriangle: [],
 	parallelogram: []
 };
-var snap;
+
+window.global=global;
+window.globalBg=globalBg;
+
+import Shape from './Shape.js';
+import shapeManager from './randomForms.js';
 
 class VerticesTest extends Phaser.Scene {
 
@@ -51,14 +57,12 @@ class VerticesTest extends Phaser.Scene {
 
 				event.pairs[i].bodyA.parent.gameObject.newCollisionStart(event.pairs[i].bodyB.parent.gameObject);
 				event.pairs[i].bodyB.parent.gameObject.newCollisionStart(event.pairs[i].bodyA.parent.gameObject);
-				//event.pairs[i].bodyA.parent.gameObject.setColliding(true);
-				//event.pairs[i].bodyB.parent.gameObject.setColliding(true);
 			}
 		});
 
-		this.matter.world.on('collisionactive', function (event, bodyA, bodyB) { //TODO remove this if never used
+		/*this.matter.world.on('collisionactive', function (event, bodyA, bodyB) {
 			//console.log(event);
-		});
+		});*/
 
 		this.matter.world.on('collisionend', function (event, bodyA, bodyB) {
 
@@ -66,8 +70,6 @@ class VerticesTest extends Phaser.Scene {
 
 				event.pairs[i].bodyA.parent.gameObject.newCollisionEnd(event.pairs[i].bodyB.parent.gameObject);
 				event.pairs[i].bodyB.parent.gameObject.newCollisionEnd(event.pairs[i].bodyA.parent.gameObject);
-				//event.pairs[i].bodyA.parent.gameObject.setColliding(false);
-				//event.pairs[i].bodyB.parent.gameObject.setColliding(false);
 			}
 		});
 	}
@@ -82,12 +84,13 @@ class VerticesTest extends Phaser.Scene {
 		this.m_gShapes.x = 0;
 		this.m_gShapes.y = 0;
 
-		let cat1 = this.matter.world.nextCategory();
-		let cat2 = this.matter.world.nextCategory();
-		let cat3 = this.matter.world.nextCategory();
-		let cat4 = this.matter.world.nextCategory();
+		let cat1 = this.matter.world.nextCategory(); // front piece vertice
+		let cat2 = this.matter.world.nextCategory(); // front piece body
+		let cat3 = this.matter.world.nextCategory(); // bg piece vertice
+		let cat4 = this.matter.world.nextCategory(); // bg piece body
+		let cat5 = this.matter.world.nextCategory(); // centers
 
-		this.m_aCollisionGroups = [cat1, cat2, cat3, cat4];
+		this.m_aCollisionGroups = [cat1, cat2, cat3, cat4, cat5];
 
 		let shapes = this.cache.json.get('shapes');
 
@@ -102,12 +105,12 @@ class VerticesTest extends Phaser.Scene {
 
 		this.m_bForceSameShape = false;
 
-		snap = this.m_bSnapPieces;
+		this.m_bSnapPieces;
 
 		this.createBgShapes(this.m_gBgShapes, [cat1, cat2, cat3, cat4], shapes);
 
 		if (!this.m_bIsLevelEditor)
-			this.createShapes(this.m_gShapes, [cat1, cat2, cat3, cat4], shapes);
+			this.createShapes(this.m_gShapes, [cat1, cat2, cat3, cat4, cat5], shapes);
 		else {
 			this.setEditorBtns();
 		}
@@ -160,7 +163,8 @@ class VerticesTest extends Phaser.Scene {
 			world: this.matter.world,
 			verticeBody: shapes.vertice,
 			collisionCats: colCats,
-			isBg: false
+			isBg: false,
+			centerBody: shapes.shapeCenter
 		};
 
 		if (level.pieces.bigTriangles) {
@@ -429,7 +433,6 @@ class VerticesTest extends Phaser.Scene {
 	getBodyCollisionGroup() {
 		return this.m_aCollisionGroups[0];
 	}
-
 	getVerticeCollisionGroup() {
 		return this.m_aCollisionGroups[1];
 	}
@@ -439,6 +442,9 @@ class VerticesTest extends Phaser.Scene {
 	getBgVerticeCollisionGroup() {
 		return this.m_aCollisionGroups[3];
 	}
+	getCenterCollisionGroup() {
+		return this.m_aCollisionGroups[4];
+	}
 
 	closestVerticeTo(vertice, shape) {
 		var closest = {
@@ -446,7 +452,7 @@ class VerticesTest extends Phaser.Scene {
 			vertice: null
 		};
 
-		if (!snap) //this.m_bSnapPieces
+		if (!this.m_bSnapPieces)
 			return closest;
 
 		for (let i = 0; i < this.m_gBgShapes.children.entries.length; i++) {
@@ -491,7 +497,7 @@ class VerticesTest extends Phaser.Scene {
 		let valid = true;
 		for (let i = 0; i < this.m_gBgShapes.children.entries.length; i++) {
 
-			console.log('bg: ' + this.m_gBgShapes.children.entries[i].frameName + ' ' + this.m_gBgShapes.children.entries[i].inPosition());
+			//console.log('bg: ' + this.m_gBgShapes.children.entries[i].frameName + ' ' + this.m_gBgShapes.children.entries[i].inPosition());
 
 			if (!this.m_gBgShapes.children.entries[i].inPosition()) {
 				this.m_gBgShapes.children.entries[i].error();
@@ -508,7 +514,7 @@ class VerticesTest extends Phaser.Scene {
 		let valid = true;
 		for (let i = 0; i < this.m_gShapes.children.entries.length; i++) {
 
-			console.log('moving: ' + this.m_gShapes.children.entries[i].frameName + ' ' + this.m_gShapes.children.entries[i].inPosition());
+			//console.log('moving: ' + this.m_gShapes.children.entries[i].frameName + ' ' + this.m_gShapes.children.entries[i].inPosition());
 
 			if (!this.m_gShapes.children.entries[i].inPosition()) {
 				this.m_gShapes.children.entries[i].error();
@@ -555,44 +561,10 @@ class VerticesTest extends Phaser.Scene {
 	}
 }
 
-console.log();
-//json to save in BO
 var level = {
-	bg: randomShape(),
-	pieces: {
-		bigTriangles: [{
-			x: 71,
-			y: 473,
-			rotation: 0
-		}, {
-			x: 127,
-			y: 426,
-			rotation: 3.1415926535897896
-		}],
-		mediumTriangle: [{
-			x: 141,
-			y: 288,
-			rotation: -3.1415926535897896
-		}],
-		smallTriangles: [{
-			x: 51,
-			y: 270,
-			rotation: 7.105427357601002e-15
-		}, {
-			x: 49,
-			y: 349,
-			rotation: 0
-		}],
-		diamond: [{
-			x: 139,
-			y: 213,
-			rotation: 0
-		}],
-		parallelogram: [{
-			x: 105,
-			y: 336,
-			rotation: 0.7853981633974474
-		}]
-	}
+	bg: shapeManager.randomShape(),
+	pieces: shapeManager.menuShape()
 
 }
+
+export default VerticesTest;

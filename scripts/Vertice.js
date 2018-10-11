@@ -90,3 +90,5 @@ class Vertice extends Phaser.Physics.Matter.Sprite{
 		return this.m_bCollidesWithBody;
 	}
 }
+
+export default Vertice;

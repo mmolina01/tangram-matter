@@ -1,3 +1,6 @@
+import Vertice from './Vertice.js';
+import ShapeCenter from './ShapeCenter.js';
+
 class Shape extends Phaser.Physics.Matter.Sprite {
 	constructor(config) {
 
@@ -15,20 +18,24 @@ class Shape extends Phaser.Physics.Matter.Sprite {
 		this.m_bCollidingWithShape = false;
 		this.m_aCollidesWith = [];
 		this.vertices = [];
+		this.center=null;
 		this.m_bIsColliding = false;
 		this.m_iCurrentDegreeAngle = 0;
 		this.m_bIsBg = config.isBg;
 		this.setInteractive(); //{pixelPerfect: true}
 
 		if (config.isBg) {
+			
 			this.setCollisionCategory(config.collisionCats[2]);
 			this.setCollidesWith([this.scene.getBodyCollisionGroup(), this.scene.getVerticeCollisionGroup()]);
 			this.createVertices(config.verticeBody, config.collisionCats[3]);
-		} else {
-
+		} 
+		else {
+			
 			this.setCollisionCategory(config.collisionCats[0]);
-			this.setCollidesWith([this.scene.getBgBodyCollisionGroup()]);
+			this.setCollidesWith([this.scene.getBgBodyCollisionGroup(),this.scene.getCenterCollisionGroup()]);
 			this.createVertices(config.verticeBody, config.collisionCats[1]);
+			this.createCenter(config.centerBody);
 		}
 
 		this.update();
@@ -52,26 +59,38 @@ class Shape extends Phaser.Physics.Matter.Sprite {
 
 	updateTriangle() {
 		//128x128 91x91 64x64
-		let x = -(this.width * this.originX); //top
+		
+		//top
+		let x = -(this.width * this.originX);
 		let y = -(this.height * this.originY);
 		let rotX = x * Math.cos(this.rotation) - y * Math.sin(this.rotation);
 		let rotY = x * Math.sin(this.rotation) + y * Math.cos(this.rotation);
 		this.vertices[0].x = this.x + rotX;
 		this.vertices[0].y = this.y + rotY;
 
-		x = this.width - (this.width * this.originX); //bottom right
+		//bottom right
+		x = this.width - (this.width * this.originX);
 		y = this.height - (this.height * this.originY);
 		rotX = x * Math.cos(this.rotation) - y * Math.sin(this.rotation);
 		rotY = x * Math.sin(this.rotation) + y * Math.cos(this.rotation);
 		this.vertices[1].x = this.x + rotX;
 		this.vertices[1].y = this.y + rotY;
 
-		x = -(this.width * this.originX); //bottom left
+		//bottom left
+		x = -(this.width * this.originX);
 		y = this.height - (this.height * this.originY);
 		rotX = x * Math.cos(this.rotation) - y * Math.sin(this.rotation);
 		rotY = x * Math.sin(this.rotation) + y * Math.cos(this.rotation);
 		this.vertices[2].x = this.x + rotX;
 		this.vertices[2].y = this.y + rotY;
+		
+		//center
+		if(this.center){
+			x=(this.vertices[0].x+this.vertices[1].x+this.vertices[2].x)/3;
+			y=(this.vertices[0].y+this.vertices[1].y+this.vertices[2].y)/3;
+			this.center.x=x;
+			this.center.y=y;
+		}
 	}
 
 	updateDiamond() {
@@ -103,6 +122,12 @@ class Shape extends Phaser.Physics.Matter.Sprite {
 		rotY = x * Math.sin(this.rotation) + y * Math.cos(this.rotation);
 		this.vertices[3].x = this.x + rotX;
 		this.vertices[3].y = this.y + rotY;
+		
+		//center
+		if(this.center){
+			this.center.x=this.x;
+			this.center.y=this.y;
+		}
 	}
 
 	updateParallelogram() {
@@ -134,8 +159,27 @@ class Shape extends Phaser.Physics.Matter.Sprite {
 		rotY = x * Math.sin(this.rotation) + y * Math.cos(this.rotation);
 		this.vertices[3].x = this.x + rotX;
 		this.vertices[3].y = this.y + rotY;
+		
+		if(this.center){
+			this.center.x=this.x;
+			this.center.y=this.y;
+		}
 	}
 	//- updtes
+	
+	createCenter(body){
+		
+		let config = {
+			scene: this.scene,
+			world: this.world,
+			body: body,
+			x: 0,
+			y: 0,
+			isBg: this.m_bIsBg,
+			shapeLabel: this.frameName
+		}
+		this.center = new ShapeCenter(config);
+	}
 
 	createVertices(vBody, collCat) {
 
@@ -198,11 +242,11 @@ class Shape extends Phaser.Physics.Matter.Sprite {
 
 	rotateLeft() {
 		this.rotation -= (15 * (Math.PI / 180));
-		this.tryToSnap();
+		//this.tryToSnap();
 	}
 	rotateRight() {
 		this.rotation += (15 * (Math.PI / 180));
-		this.tryToSnap();
+		//this.tryToSnap();
 	}
 
 	moveUp() {
@@ -250,8 +294,10 @@ class Shape extends Phaser.Physics.Matter.Sprite {
 			console.log(`g ${this.frameName} is not one vert valid`);
 		if (!this.allVertsOnBodies())
 			console.log(`g ${this.frameName} is not all verts on bodies`);
+		if (this.center.isColliding())
+			console.log(`g ${this.frameName} center colliding`);
 
-		return (this.oneVerticeValid() && this.isColliding() && this.allVertsOnBodies());
+		return (this.oneVerticeValid() && this.isColliding() && this.allVertsOnBodies() && !this.center.isColliding());
 	}
 
 	verticesValid() {
@@ -392,7 +438,8 @@ class Shape extends Phaser.Physics.Matter.Sprite {
 
 	newCollisionStart(col) {
 
-		if (col.body.label != 'vertice') {
+		let bLabel = col.body.label;
+		if (bLabel != 'vertice' && bLabel != 'shapeCenter') {
 
 			this.m_aCollidesWith.push(col);
 			this.reviewCollisions();
@@ -438,5 +485,14 @@ class Shape extends Phaser.Physics.Matter.Sprite {
 		});
 
 	}
+	
+	isParentOfCenter(center){
+		
+		return this.center==center;
+	}
 	//- collision managament
 }
+
+import game from './game.js';
+
+export default Shape;

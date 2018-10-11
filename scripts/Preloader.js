@@ -13,3 +13,5 @@ class Preloader extends Phaser.Scene{
 		this.scene.start('VerticesTest');
 	}
 }
+
+export default Preloader;

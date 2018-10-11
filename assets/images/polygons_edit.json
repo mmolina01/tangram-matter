@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "vertice_5.png",
+					"filename": "shapeCenter.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -267,6 +267,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:fc0a69c1a7362c7fb092938a6754c07d:cb5ec37b59574ee2427a8125581f4112:e951aaae5397048950c99be96013709d$"
+		"smartupdate": "$TexturePacker:SmartUpdate:d314a38df3bc592b7eb0253ff43d543e:7e1129391151e4c27c86222633ed3856:e951aaae5397048950c99be96013709d$"
 	}
 }

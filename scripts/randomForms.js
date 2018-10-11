@@ -1,4 +1,39 @@
 let forms = [
+	{
+		bigTriangles: [{
+			x: 71,
+			y: 473,
+			rotation: 0
+		}, {
+			x: 127,
+			y: 426,
+			rotation: 3.1415926535897896
+		}],
+		mediumTriangle: [{
+			x: 141,
+			y: 288,
+			rotation: -3.1415926535897896
+		}],
+		smallTriangles: [{
+			x: 51,
+			y: 270,
+			rotation: 7.105427357601002e-15
+		}, {
+			x: 49,
+			y: 349,
+			rotation: 0
+		}],
+		diamond: [{
+			x: 139,
+			y: 213,
+			rotation: 0
+		}],
+		parallelogram: [{
+			x: 105,
+			y: 336,
+			rotation: 0.7853981633974474
+		}]
+	},
 	{ //1 "square"
 		bigTriangles: [{
 			x: 526.9966329107444,
@@ -174,12 +209,21 @@ let forms = [
 			rotation: 3.1415926535897896
 		}]
 	}
-
 ];
 
-var randomShape = function() {
+let shapeManager={};
 
-	let idx = Math.floor(Math.random() * forms.length);
+shapeManager.randomShape = function(){
+	return forms[Math.floor(Math.random() * (forms.length-1))+1];
+}
 
+shapeManager.getShape = function(idx){
 	return forms[idx];
 }
+
+shapeManager.menuShape = function(){
+	return shapeManager.getShape(0);
+}
+
+
+export default shapeManager;
